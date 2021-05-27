@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+// import "google/protobuf/timestamp.proto";
+
+package item;
+option go_package = "./cmd/item/itempb";
+
+message Item{
+    int64 id = 1;
+    string name = 2;
+    int32 price = 3;
+    string code = 4;
+    string barcode = 5;
+    string expire_date = 6;
+    string warning_date=7;
+    int32 quantity = 8;
+    int64 registered_by=9;
+}
+
+message CreateItemRequest{
+    Item item = 1;
+}
+
+message CreateItemResponse{
+    Item item = 1;
+}
+
+service ItemService{
+    rpc CreateItem (CreateItemRequest) returns (CreateItemResponse);
+}
